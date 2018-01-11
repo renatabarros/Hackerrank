@@ -1,0 +1,30 @@
+# First lesson is to calculate mean, median and mode
+# Create a vector with the sample numbers
+
+x <- c(64630, 11735, 14216, 99233, 14470, 4978, 73429, 38120, 51135, 67060)
+
+# Calculate the mean & assign to a variable
+
+mean_x <- mean(x)
+
+# Calculate the median & assign to a variable
+
+median_x <- median(x)
+
+# There is no built in function for mode in R, so one has to be created.
+
+getmode <- function(x) {
+  uniqx <- unique(x)
+  uniqx[which.max(tabulate(match(x, uniqx)))]
+}
+
+# Calculate the mode & assign to a variable. Include sort so the smallest number is picked.
+
+mode_x <- getmode(sort(x))
+
+# Output. Cat instead of print so the outcome is only numbers without [1].
+
+cat(mean_x, sep = "\n")
+cat(median_x, sep = "\n")
+cat(mode_x)
+
