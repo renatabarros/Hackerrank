@@ -1,11 +1,20 @@
-# Lesson about weighted mean
-# Create two arrays, x (elements) and w (weights)
+# Weighted mean
 
-x <- c(10, 40, 30, 50, 20)
-w <- c(1, 2, 3, 4, 5)
+# Read the file & separate lines
+data <- file('stdin', open = 'r')
+lines <- readLines(data)
 
-# Apply the weighted mean formula
+# Get lines 2 & 3 and assign to elements and weights respectively
+elements <- lines[[2]]
+weights <- lines[[3]]
 
-wmean <- sum(x * w) / sum(w)
-wmean_dec <- formatC(wmean, digits = 1, format="f") 
-cat(wmean_dec)
+# Convert strings to vectors
+convert <- function(string){
+    return (as.numeric(unlist(strsplit(string, " "))))
+}
+
+# Calculate the weighted mean
+wmean <- weighted.mean(convert(elements), convert(weights)) 
+
+# Print the result with one decimal place 
+cat(format(round(wmean, 1), nsmall = 1))
