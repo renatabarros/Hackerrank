@@ -1,0 +1,11 @@
+# Lesson about weighted mean
+# Create two arrays, x (elements) and w (weights)
+
+x <- c(10, 40, 30, 50, 20)
+w <- c(1, 2, 3, 4, 5)
+
+# Apply the weighted mean formula
+
+wmean <- sum(x * w) / sum(w)
+wmean_dec <- formatC(wmean, digits = 1, format="f") 
+cat(wmean_dec)
